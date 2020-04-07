@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  lego:
+    image: xenolf/lego
+    env_file:
+      - .env
+    command: >
+      --path /cert
+      --dns conoha
+      --email $EMAIL
+      --domains "*.$DOMAIN"
+      --domains "$DOMAIN"
+      --accept-tos
+      run
+    volumes:
+      - ${PWD}/cert:/cert
+
